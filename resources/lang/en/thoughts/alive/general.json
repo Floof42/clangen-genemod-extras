@@ -1,4 +1,27 @@
 [
+            {
+        "id": "stern_former_kittypet_to_other",
+        "thoughts": [
+            "Scolds r_c for calling a road a 'thunderpath'",
+            "Scolds r_c for calling housefolk 'twolegs'",
+            "Rolls {PRONOUN/m_c/poss} eyes as r_c asks kittypet food tastes like",
+            "Is done with r_c asking {PRONOUN/m_c/object} about {PRONOUN/m_c/poss} housefolk"
+        ],
+        "main_backstory_constraint": [
+            "kittypet1",
+            "kittypet2",
+            "kittypet3",
+            "kittypet4",
+            "refugee3",
+            "tragedy_survivor3",
+            "guided1"
+        ],
+        "main_trait_constraint": [
+            "arrogant",
+            "cold",
+            "strict"
+        ]
+    },
     {
         "id": "gen",
         "thoughts": [
