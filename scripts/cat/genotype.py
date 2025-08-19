@@ -2010,7 +2010,7 @@ class Genotype:
             self.Other_Colour = [self.pinkdilute, self.dilutemd, self.ext, self.corin, self.karp, self.bleach, self.ghosting, self.satin, self.glitter]
             self.Body_Genes = [self.curl, self.fold, self.fourear, self.manx, self.kab, self.toybob, self.jbob, self.kub, self.ring, self.munch, self.poly, self.pax3]
             april_fools_output = [self.april_fools.values()]
-        self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Saturation:", self.saturation, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
+        self.Polygenes = ["Wideband:", self.wideband, self.wbtype, "Rufousing:", self.rufousing, self.ruftype, "Underbelly rufousing:", self.unders_ruf, self.unders_ruftype, "Saturation:", self.saturation, "Bengal:", self.bengal, self.bengtype, "Sokoke:", self.sokoke, self.soktype, "Spotted:", self.spotted, self.spottype, "Ticked:", self.tickgenes, self.ticktype, "White Grade:", self.whitegrade, "Refraction:", self.refraction, "Pigmentation:", self.pigmentation]
 
         if is_today(SpecialDate.APRIL_FOOLS):
             return self.Cat_Genes, "Other Fur Genes: ", self.Fur_Genes, "Other Colour Genes: ", self.Other_Colour, "Body Mutations: ", self.Body_Genes, "Polygenes: ", self.Polygenes, "April Fools:", april_fools_output
@@ -2395,8 +2395,12 @@ class Genotype:
     
     def GenerateSomatic(self):
         self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', 
-                                    'underbelly1', 'right front bicolour2', 'left front bicolour2', 
-                                    'right back bicolour2', 'left back bicolour2'])
+                                    'underbelly1', "BEARD", "BELLY", "BIB",
+                                    'right front bicolour2', 'left front bicolour2', 
+                                    'right back bicolour2', 'left back bicolour2', 
+                                    'right front bicolour1', 'left front bicolour1', 
+                                    'right back bicolour1', 'left back bicolour1', 
+                                    "LEFTEAR", "RIGHTEAR", "BACKSPOT", "TAILTIP"])
 
         possible_mutes = {
         "furtype" : ["wirehair", "laperm", "cornish", "urals", "tenn", "fleece", "sedesp"],
@@ -2445,7 +2449,7 @@ class Genotype:
                     continue
             if self[gene][0] in ['I', 'b', 'bl', 'd', 'wg', 'wsal', 'cs', 'cb', 'cm', 'c', 'Apb', 'a']:
                 filtered_mutes["main"].remove(gene)
-            elif self[gene][1] in ['B', 'D', 'w', 'C', 'A']:
+            elif len(self[gene]) > 1 and self[gene][1] in ['B', 'D', 'w', 'C', 'A']:
                 filtered_mutes["main"].remove(gene)
             
         if "eumelanin" in filtered_mutes["main"] and self.sexgene[0] != "o":
@@ -2465,10 +2469,12 @@ class Genotype:
             return
 
         
-        if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail']:
-            self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail'])
+        if self.white[1] in ['ws', 'wt'] and self.somatic["base"] not in ['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT"]:
+            self.somatic["base"] = choice(['Somatic/leftface', 'Somatic/rightface', 'Somatic/tail', "LEFTEAR", "RIGHTEAR", "BACKSPOT"])
+        
         if self.somatic["gene"] in possible_mutes["furtype"]:
             self.somatic["base"] = "Somatic/tail"
+
         
         alleles = {
             "wirehair" : ['Wh'],
@@ -2508,7 +2514,18 @@ class Genotype:
             'right front bicolour2' : 'front leg', 
             'left front bicolour2' : 'front leg', 
             'right back bicolour2' : 'back leg', 
-            'left back bicolour2' : 'back leg'
+            'left back bicolour2' : 'back leg',
+            'right front bicolour1' : 'front leg', 
+            'left front bicolour1' : 'front leg', 
+            'right back bicolour1' : 'back leg', 
+            'left back bicolour1' : 'back leg',
+            'LEFTEAR' : 'ear', 
+            'RIGHTEAR' : 'ear', 
+            "BACKSPOT": "back",
+            "TAILTIP": "tail tip",
+            "BEARD": "chin",
+            "BELLY": "belly",
+            "BIB": "chest"
         }
         if not self.somatic.get('gene', False):
             return ""
