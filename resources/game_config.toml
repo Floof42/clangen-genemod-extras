@@ -43,7 +43,7 @@ dev_tools = false
     # The cut-off for each value level. This starts at -100 with each int marking the end of that level. 
     # For example, extreme_neg ends at -70, making its full range -100 to -70. mid_neg starts from -69 and continues till -25.
     # NOTE: increasing extreme_pos past 100 or decreasing extreme_neg below -100 will probably break things
-      extreme_neg = -70
+      extreme_neg = -60
       mid_neg = -25
       low_neg = -6
       neutral = 5
@@ -305,10 +305,10 @@ dev_tools = false
 
 [cat_generation]
   # base 1/chance that a cat will generate with a permanent condition. gets modified further in code
-  base_permanent_condition = 90
+  base_permanent_condition = 42
 
   # kittypets will have a higher chance of having many rarer genes, even if not purebred
-  kittypet_gene_boost = false
+  kittypet_gene_boost = true
 
 [cat_name_controls]
   # if changing prefixes is enabled, 1/chance for a cat to change their prefix when coming out as trans
@@ -327,7 +327,7 @@ dev_tools = false
 
 [accessory_generation]
   # base 1/chance a cat generates with an accessory 
-  base_acc_chance = 150
+  base_acc_chance = 140
 
   # modifiers for accessories add or subtract from chance IN THE DENOMINATOR 
   #   i.e. 1/(chance + med_modifier + baby_modifier + elder_modifier + ...)
@@ -424,8 +424,8 @@ dev_tools = false
   # modifies success rate based on game mode. higher = more difficult.
   # the Cruel Season difficulty modifier needs to have a space rather than an underscore 
   # due to how it's written in the save files. So don't try to 'fix' it.
-  classic_difficulty_modifier = 1
-  expanded_difficulty_modifier = 2.5
+  classic_difficulty_modifier = 2
+  expanded_difficulty_modifier = 3
   "cruel season_difficulty_modifier" = 3
 
   # amount to modify patrol success based on patrol stats
@@ -461,17 +461,17 @@ dev_tools = false
 
 [death_related]
   # base 1/chance that leader will die
-  leader_death_chance = 50
+  leader_death_chance = 45
 
   # base 1/chance a cat will die
-  classic_death_chance = 500
-  expanded_death_chance = 350
+  classic_death_chance = 400
+  expanded_death_chance = 290
   "cruel season_death_chance" = 300
 
   # modifiers for death chance based on if a war is going badly
   # SUBTRACTS from the denominator so higher = more likely to die
   war_death_modifier_leader = 35
-  war_death_modifier = 330
+  war_death_modifier = 300
 
   # base 1/2^(chance) a completely random murder occurs
   # aggression and instability will make the denominator lower and increase chance of murder
@@ -499,17 +499,17 @@ dev_tools = false
 
 [condition_related]
   # 10/chance an illness will occur
-  expanded_illness_chance = 250
+  expanded_illness_chance = 222
   "cruel season_illness_chance" = 200
-  classic_illness_chance = 500
+  classic_illness_chance = 400
 
   # 5/chance (for most personalities) or 15/chance (for some personalities) an injury will occur 
-  classic_injury_chance = 450
-  expanded_injury_chance = 250
+  classic_injury_chance = 300
+  expanded_injury_chance = 150
   "cruel season_injury_chance" = 150
 
   # 1/chance a cat will get a permanent condition from an event with that possibility 
-  permanent_condition_chance = 15
+  permanent_condition_chance = 3
 
   # modifiers for injury chance based on if a war is going badly
   # SUBTRACTS from the denominator so higher = more likely to get injured
@@ -517,7 +517,7 @@ dev_tools = false
 
 [clan_creation]
   # Set this to -1 for it to be infinite
-  rerolls = 3
+  rerolls = -1
 
   # If true, boosts the chance of rarer genes and breeds for founding cats
   use_special_roller = true
@@ -527,26 +527,26 @@ dev_tools = false
 
 [genetics_config]
   # 1/chance for newly generated kittypets and other cats to be purebred
-  kittypet_breed = 75
-  other_breed = 1000
+  kittypet_breed = 50
+  other_breed = 375
 
-  chimera = 1000
+  chimera = 600
   identical_twins = 333
-  intersex = 100
-  "XXX/XXY" = 1000
-  "X monosomy" = 3500
+  intersex = 80
+  "XXX/XXY" = 900
+  "X monosomy" = 2760
   brindled_bicolour = 1000
   pseudo_merle = 200
-  vitiligo = 150
-  random_mutation = 150
-  somatic_mutation = 200
+  vitiligo = 125
+  random_mutation = 125
+  somatic_mutation = 170
   breakthrough = 50
   dense_blotched = 50
-  cryptic_tortie = 100
-  sectoral_heterochromia = 200
-  random_heterochromia = 250
+  cryptic_tortie = 90
+  sectoral_heterochromia = 150
+  random_heterochromia = 150
 
-  no-low_white_blue_eyes = 100
+  no-low_white_blue_eyes = 90
   low_white_blue_eyes = 75
   mid_white_blue_eyes = 50
   high_white_blue_eyes = 25
@@ -569,35 +569,35 @@ dev_tools = false
   "dominant white" = 15
   "white spotting" = 3
   "birman gloving" = 10
-  "thai white" = 400
-  "salmiak" = 300
+  "thai white" = 250
+  "salmiak" = 150
   colourpoint = 10
   sepia = 20
-  mocha = 300
-  albino = 200
+  mocha = 150
+  albino = 100
   silver = 20
   solid = 2
   charcoal = 150
   blotched = 3
   ticked = 10
 
-  "pink-eyed dilute" = 400
+  "pink-eyed dilute" = 250
   "dilute modifier" = 150
-  grizzle = 275
-  carnelian = 200
-  russet = 250
+  grizzle = 250
+  carnelian = 175
+  russet = 222
   amber = 125
   sunshine = 125
   "extreme sunshine" = 125
   copper = 125
-  karpati = 300
-  bleaching = 400
-  ghosting = 400
-  satin = 400
+  karpati = 250
+  bleaching = 350
+  ghosting = 350
+  satin = 350
   glitter = 150
 
-  wirehair = 400
-  laperm = 400
+  wirehair = 350
+  laperm = 350
   cornish = 200
   urals = 400
   tenn = 300
@@ -605,21 +605,21 @@ dev_tools = false
   selkirk = 300
   devon = 200
   "canadian hairless" = 300
-  "russian hairless" = 400
+  "russian hairless" = 350
   lykoi = 350
 
-  curl = 300
-  fold = 300
-  four_ears = 300
-  manx = 300
-  "american bobtail" = 300
-  "karelian bobtail" = 500
-  "kurilian bobtail" = 400
+  curl = 250
+  fold = 250
+  four_ears = 250
+  manx = 200
+  "american bobtail" = 250
+  "karelian bobtail" = 404
+  "kurilian bobtail" = 375
   "japanese bobtail" = 250
   toybob = 400
   ringtail = 400
   munchkin = 300
-  polydactyl = 150
+  polydactyl = 120
   DBE = 150
 
   body_ranges = [1, 4, 12, 60, 12, 4, 1]
@@ -656,7 +656,7 @@ dev_tools = false
   base_med_app_timeskip_ex = [[2, 7], [2, 3]]
 
   # minimum age required for a cat to graduate
-  min_graduating_age = 10
+  min_graduating_age = 8
 
   [graduation.max_apprentice_age]
     # max apprentice ages. after this, they're forcibly promoted
@@ -696,7 +696,7 @@ dev_tools = false
     prey_warrior = 3
 
     # how much herb each working medicine cat will gather
-    herb_medicine = 4
+    herb_medicine = 3
 
     # injury chance of each warrior(leader/deputy) or medicine cat to get injured
     injury_chance_warrior = 18
